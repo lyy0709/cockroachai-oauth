@@ -16,7 +16,7 @@
 git clone https://github.com/lyy0709/cockroachai-oauth.git
 ```
 
-- 手动创建```bash docker-compose.yml ```
+- 手动创建``` docker-compose.yml ```
   
 ```bash
 version: '3.8'
@@ -34,7 +34,7 @@ services:
 
 ### 创建密码本
 
-- 密码本路径为本项目地址下的```bash /data/usertoken.txt ```
+- 密码本路径为本项目地址下的``` /data/usertoken.txt ```
   
 ### 使用caddy进行反代
 
