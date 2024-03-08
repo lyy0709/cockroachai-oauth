@@ -1,6 +1,6 @@
 # cockroachai-oauth
 
-- 指路[cockroachai](https://github.com/cockroachai/cockroachai)，本项目可分布部署，与cockroachai部署在不同的服务器上，可对接～～企业微信机器人～～，tg机器人
+- 指路[cockroachai](https://github.com/cockroachai/cockroachai)，本项目可分布部署，与cockroachai部署在不同的服务器上，可对接~~企业微信机器人~~，tg机器人
 
 ## 对接cockroachai的第三方账户系统
 
@@ -24,7 +24,7 @@ services:
   cockroachai-oauth:
     image: lyy0709/cockroachai-oauth:latest
     ports:
-      - "8999:8999"
+      - "8999:8999" #左侧为暴露的端口
     environment:
       - SECRET_KEY=xxxxxxxxxxxxxx #修改此处进行session保护，应使用复杂的随机值
       - CORRECT_PASSWORD=xxxxx #修改此处改为登陆密码
@@ -76,7 +76,7 @@ OAUTH_URL: https://xxx.com/oauth #填入上一步反代的域名
 
 - 重启cockroachai
 
-## 对接～～企业微信机器人～～
+## 对接~~企业微信机器人~~
 
 ## 对接tg机器人
 
