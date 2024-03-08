@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  cockroachai-oauth:
+    image: lyy0709/cockroachai-oauth:latest
+    ports:
+      - "8999:8999"
+    environment:
+      - SECRET_KEY=xxxxxxxxxxxxxx
+      - CORRECT_PASSWORD=xxxxx
+    volumes:
+      - ./data:/app/data
