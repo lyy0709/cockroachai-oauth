@@ -48,16 +48,16 @@ services:
     ports:
       - "8999:8999" #左侧为暴露的端口
     environment:
-      - SECRET_KEY=xxxxxxxxxxxxxx #修改此处进行session保护，应使用复杂的随机值
-      - CORRECT_PASSWORD=xxxxx #修改此处改为账户系统登陆密码
-	  - UPDATE_URL=http://auditlimit:8998/update #8998为下方auditlimt服务的端口
+      - SECRET_KEY=xxxxxxxxxxx  #修改此处进行session保护，应使用复杂的随机值
+      - CORRECT_PASSWORD=xxxxxx  #修改此处改为账户系统登陆密码
+      - UPDATE_URL=http://auditlimit:8998/update #8998为下方auditlimt服务的端口
     volumes:
       - ./data:/app/data
   auditlimit:
     image: lyy0709/auditlimit:latest
     restart: always
     ports:
-      - "8998:8998" #左侧为暴露的端口
+      - "8998:8998"
     volumes:
       - ./data:/app/data
     environment:
