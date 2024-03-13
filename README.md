@@ -8,6 +8,8 @@
 
 ## 项目更新
 
+- 新增对每个用户进行独立限速以及是否启用plus，Token列表独立出来
+
 - 添加企业微信机器人的定时消息推送，填写企业微信机器人url后每天早上9点推送节点（url）以及节点下的用户
 
 - 添加审计系统，可以看到各个节点过去时间段内（默认3小时，每个用户40次gpt4请求，可修改限速服务中LIMIT: 40，PER: "3h"更改）各个用户的使用情况，仅统计gpt4相关模型
@@ -48,21 +50,18 @@ services:
     ports:
       - "8999:8999" #左侧为暴露的端口
     environment:
-      - SECRET_KEY=xxxxxxxxxxx  #修改此处进行session保护，应使用复杂的随机值
-      - CORRECT_PASSWORD=xxxxxx  #修改此处改为账户系统登陆密码
-      - UPDATE_URL=http://auditlimit:8998/update #8998为下方auditlimt服务的端口
+      - SECRET_KEY=xxxxxxxxxxxxxx #修改此处进行session保护，应使用复杂的随机值
+      - CORRECT_PASSWORD=xxxxx #修改此处改为账户系统登陆密码
+	  - UPDATE_URL=http://auditlimit:8998/update #8998为下方auditlimt服务的端口
     volumes:
       - ./data:/app/data
   auditlimit:
     image: lyy0709/auditlimit:latest
     restart: always
     ports:
-      - "8998:8998"
+      - "8998:8998" #左侧为暴露的端口
     volumes:
       - ./data:/app/data
-    environment:
-      LIMIT: 40  # 限制每个userToken允许的次数
-      PER: "3h" # 限制周期 1s, 1m, 1h, 1d, 1w, 1y
 ```
 
 ### ~~创建密码本~~
