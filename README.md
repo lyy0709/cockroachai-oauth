@@ -2,7 +2,9 @@
 
 - 指路[cockroachai](https://github.com/cockroachai/cockroachai)，本项目可分布部署，与cockroachai部署在不同的服务器上，可对接企业微信机器人，tg机器人
 
-## cockroachai的ja3proxy含http代理部署，ja3项目（过cockroachai的cf盾）指路[ja3-proxy](https://github.com/cockroachai/ja3-proxy)
+## ja3项目（过cockroachai的cf盾）指路[ja3-proxy](https://github.com/cockroachai/ja3-proxy)
+
+- 找一台可以直连oai的机器，新建一个文件夹复制以下的代码作为docker-compose.yml文件
 
 ```bash
 version: '3.8'
@@ -40,6 +42,11 @@ services:
       LOCALPROXYUSER: "" # ja3代理服务用户名
       LOCALPROXYPASS: "" # ja3代理服务密码
 ```
+- 开放以上code中的http代理端口以及ja3端口
+
+- 使用```docker compose up -d ```运行
+
+- 在cockroachai的config文件夹中的config.yml中的PROXY填入```http://username:password@服务器ip:端口```（username为上方代码的ja3代理服务用户名，password为ja3代理服务密码）
 
 ## 对接cockroachai的第三方账户系统
 
