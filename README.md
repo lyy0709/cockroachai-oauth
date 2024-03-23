@@ -37,7 +37,7 @@ services:
       - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口
     environment:
       WEBSITE_URL: "https://chat.openai.com/auth/login" # 要过盾的目标网站
-      PROXY: http://username:password@服务器ip:端口  # 代理服务器信息，填入上方的http代理用户名和密码
+      PROXY: http://username:password@服务器ip:端口  # 代理服务器信息，填入上方的http代理用户名和密码，端口为上方tinyproxy的端口，必须暴露
       CLIENTKEY: "48bxxxxx" # yescaptcha 的 clientKey
       LOCALPROXYUSER: "" # ja3代理服务用户名
       LOCALPROXYPASS: "" # ja3代理服务密码
@@ -46,7 +46,7 @@ services:
 
 - 使用```docker compose up -d ```运行
 
-- 在cockroachai的config文件夹中的config.yml中的PROXY填入```http://username:password@服务器ip:端口```（username为上方代码的ja3代理服务用户名，password为ja3代理服务密码）
+- 在cockroachai的config文件夹中的config.yml中的PROXY填入```http://username:password@服务器ip:ja3端口```（username为上方代码的ja3代理服务用户名，password为ja3代理服务密码，端口为ja3端口，若ja3和cockroachai部署在一台机器上服务器ip可以为172.17.0.1）
 
 - 重启cockroachai
 
