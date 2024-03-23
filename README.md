@@ -46,7 +46,7 @@ services:
 
 - 使用```docker compose up -d ```运行
 
-- 在cockroachai的config文件夹中的config.yml中的PROXY填入```http://username:password@服务器ip:ja3端口```（username为上方代码的ja3代理服务用户名，password为ja3代理服务密码，端口为ja3端口，若ja3和cockroachai部署在一台机器上服务器ip可以为172.17.0.1）
+- 在cockroachai的config文件夹中的config.yml中的PROXY填入```http://username:password@服务器ip:ja3端口```（username为上方代码的ja3代理服务用户名，password为ja3代理服务密码，端口为ja3端口，若ja3和cockroachai部署在一台机器上服务器ip可以为172.17.0.1，不能为127.0.0.1）
 
 - 重启cockroachai
 
