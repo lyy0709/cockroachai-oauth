@@ -50,6 +50,8 @@ services:
 
 - 重启cockroachai
 
+- 在cockroachai服务器上使用```curl --insecure --proxy http://ja3代理服务用户名:ja3代理服务密码@ja3服务器ip:ja3端口 'https://chat.openai.com/'```
+
 - 一个yescaptcha的clientKey,新用户请使用栋哥的推荐链接 https://yescaptcha.com/i/RLazNv 注册,可以直接获得VIP5等级,注意成功后，联系yescaptcha客服可获取赠送的1500积分。
 
 ## 对接cockroachai的第三方账户系统
