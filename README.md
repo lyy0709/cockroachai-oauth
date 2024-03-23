@@ -32,7 +32,7 @@ services:
       timeout: 10s
       retries: 1
   ja3-proxy:
-    image: xyhelper/ja3-proxy
+    image: xyhelper/ja3-proxy:latest
     ports:
       - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口，ja3端口
     environment:
