@@ -48,6 +48,10 @@ services:
 
 - 在cockroachai的config文件夹中的config.yml中的PROXY填入```http://username:password@服务器ip:端口```（username为上方代码的ja3代理服务用户名，password为ja3代理服务密码）
 
+- 重启cockroachai
+
+- 一个yescaptcha的clientKey,新用户请使用栋哥的推荐链接 https://yescaptcha.com/i/RLazNv 注册,可以直接获得VIP5等级,注意成功后，联系yescaptcha客服可获取赠送的1500积分。
+
 ## 对接cockroachai的第三方账户系统
 
 - 本项目采用oauth的方式对接cockroachai的第三方账户系统
