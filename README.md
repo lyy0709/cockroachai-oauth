@@ -2,6 +2,45 @@
 
 - 指路[cockroachai](https://github.com/cockroachai/cockroachai)，本项目可分布部署，与cockroachai部署在不同的服务器上，可对接企业微信机器人，tg机器人
 
+# cockroachai的ja3proxy含http代理部署，ja3项目（过cockroachai的cf盾）指路[ja3-proxy](https://github.com/cockroachai/ja3-proxy)
+
+```bash
+version: '3.8'
+services:
+  tinyproxy:
+    image: docker.io/kalaksi/tinyproxy:latest
+    restart: unless-stopped
+    cap_drop:
+      - ALL
+    ports:
+      - 端口:8888 #左侧端口暴露在外,可根据需求更改，防火墙放行该端口
+    environment:
+      DISABLE_VIA_HEADER: 'yes'
+      STAT_HOST: tinyproxy.stats
+      MAX_CLIENTS: 100
+      # A space separated list:
+      ALLOWED_NETWORKS: 0.0.0.0/0
+      LOG_LEVEL: Notice
+      TIMEOUT: 900
+      AUTH_USER: 'username' #http代理用户名
+      AUTH_PASSWORD: 'password' #http代理密码
+    healthcheck:
+      test: ["CMD", "curl", "-I", "-H", "Host: tinyproxy.stats", "http://localhost:8888"]
+      interval: 5m
+      timeout: 10s
+      retries: 1
+  ja3-proxy:
+    image: xyhelper/ja3-proxy
+    ports:
+      - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口
+    environment:
+      WEBSITE_URL: "https://chat.openai.com/auth/login" # 要过盾的目标网站
+      PROXY: http://username:password@服务器ip:端口  # 代理服务器信息，填入上方的http代理用户名和密码
+      CLIENTKEY: "48bxxxxx" # yescaptcha 的 clientKey
+      LOCALPROXYUSER: "" # ja3代理服务用户名
+      LOCALPROXYPASS: "" # ja3代理服务密码
+```
+
 ## 对接cockroachai的第三方账户系统
 
 - 本项目采用oauth的方式对接cockroachai的第三方账户系统
