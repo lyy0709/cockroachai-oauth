@@ -42,6 +42,22 @@ services:
       LOCALPROXYUSER: "" # ja3代理服务用户名，只能为小写字母和数字
       LOCALPROXYPASS: "" # ja3代理服务密码，只能为小写字母和数字
 ```
+或者也可以这样，不过这样http代理以及ja3代理的用户密码则变为一致
+```bash
+version: '3.8'
+services:
+  ja3-proxy:
+    image: xyhelper/ja3-proxy:latest
+    ports:
+      - "http端口:3128" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口，http端口
+      - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口，ja3端口
+    environment:
+      WEBSITE_URL: "https://chat.openai.com/auth/login" # 要过盾的目标网站
+      PROXY: http://username:password@服务器ip:http端口  # 代理服务器信息，填入上方的http代理用户名和密码，端口为上方tinyproxy的端口，必须暴露
+      CLIENTKEY: "48bxxxxx" # yescaptcha 的 clientKey
+      LOCALPROXYUSER: "" # ja3代理服务用户名，只能为小写字母和数字
+      LOCALPROXYPASS: "" # ja3代理服务密码，只能为小写字母和数字
+```
 - 开放以上code中的http代理端口以及ja3端口
 
 - 使用```docker compose up -d ```运行
