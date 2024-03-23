@@ -15,7 +15,7 @@ services:
     cap_drop:
       - ALL
     ports:
-      - 端口:8888 #左侧端口暴露在外,可根据需求更改，防火墙放行该端口
+      - 端口:8888 #左侧端口暴露在外,可根据需求更改，防火墙放行该端口，http代理端口
     environment:
       DISABLE_VIA_HEADER: 'yes'
       STAT_HOST: tinyproxy.stats
@@ -34,7 +34,7 @@ services:
   ja3-proxy:
     image: xyhelper/ja3-proxy
     ports:
-      - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口
+      - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口，ja3端口
     environment:
       WEBSITE_URL: "https://chat.openai.com/auth/login" # 要过盾的目标网站
       PROXY: http://username:password@服务器ip:端口  # 代理服务器信息，填入上方的http代理用户名和密码，端口为上方tinyproxy的端口，必须暴露
