@@ -53,10 +53,10 @@ services:
       - "ja3端口:9988" #左侧端口暴露在外,可根据需求更改，防火墙放行该端口，ja3端口
     environment:
       WEBSITE_URL: "https://chat.openai.com/auth/login" # 要过盾的目标网站
-      PROXY: http://username:password@服务器ip:http端口  # 代理服务器信息，填入上方的http代理用户名和密码，端口为上方tinyproxy的端口，必须暴露
+      PROXY: http://username:password@服务器ip:http端口  # 代理服务器信息，填入上方的http代理用户名和密码，端口为上方http端口，必须暴露
       CLIENTKEY: "48bxxxxx" # yescaptcha 的 clientKey
-      LOCALPROXYUSER: "" # ja3代理服务用户名，只能为小写字母和数字
-      LOCALPROXYPASS: "" # ja3代理服务密码，只能为小写字母和数字
+      LOCALPROXYUSER: "username" # ja3代理服务用户名，只能为小写字母和数字
+      LOCALPROXYPASS: "password" # ja3代理服务密码，只能为小写字母和数字
 ```
 - 开放以上code中的http代理端口以及ja3端口
 
